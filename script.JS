@@ -2,30 +2,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("dark-toggle");
   const lightContent = document.querySelector(".light-content");
   const darkContent = document.querySelector(".dark-content");
-  
 
-  // Function to update mode UI
+  // Function to update the mode UI
   function updateModeUI(isDarkMode) {
-    document.body.classList.toggle("dark-mode", isDarkMode);
+    if (isDarkMode) {
+      document.body.classList.add("dark-mode");
+      lightContent.classList.remove("active");
+      darkContent.classList.add("active");
+      toggleBtn.textContent = "✨ Spark Mode";
+    } else {
+      document.body.classList.remove("dark-mode");
+      lightContent.classList.add("active");
+      darkContent.classList.remove("active");
+      toggleBtn.textContent = "💻 Stack Mode";
+    }
 
-    lightContent.classList.toggle("active", !isDarkMode);
-    darkContent.classList.toggle("active", isDarkMode);
-
-    toggleBtn.textContent = isDarkMode ? "✨ Spark Mode" : "💻 Stack Mode";
-
-    // Refresh AOS (if animations are used)
+    // Refresh AOS animations if used
     if (typeof AOS !== "undefined") {
       AOS.refresh();
     }
   }
 
-  // Set initial mode to Light Mode
-  updateModeUI(false);
+  // Set initial state
+  let isDarkMode = false;
+  updateModeUI(isDarkMode);
 
-  // Toggle button listener
+  // Toggle dark mode on button click
   toggleBtn.addEventListener("click", () => {
-    const isDarkModeNow = !document.body.classList.contains("dark-mode");
-    updateModeUI(isDarkModeNow);
-    AOS.refresh();
+    isDarkMode = !isDarkMode;
+    updateModeUI(isDarkMode);
   });
 });
