@@ -14,6 +14,9 @@ body {
   transition: background-image 0.6s ease, color 0.3s ease;
   padding: 20px;
   position: relative;
+
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Overlay */
@@ -108,6 +111,7 @@ body.dark-mode main {
 /* Sections */
 section {
   margin-bottom: 40px;
+  flex-direction: column;
 }
 
 section h2 {
@@ -155,6 +159,7 @@ footer {
 @media screen and (max-width: 768px) {
   #name {
     font-size: 2.2rem;
+    flex-direction: column;
   }
 
   .typewriter {
@@ -240,36 +245,6 @@ footer {
   flex-wrap: wrap;
 }
 
-.hobbies {
-  text-align: left; /* or center if you want */
-  max-width: 800px;
-  margin: auto;
-  line-height: 1.6;
-  font-size: 18px;
-  padding: 20px;
-}
-.hobbies h2 {
-  font-size: 1.8rem;
-  margin-bottom: 12px;
-  box-shadow: 0px 1px 1px black;
-  border-radius: 5px;
-  text-align: center;
-}
-.hobbies p {
-  text-align: justify;
-  margin-bottom: 20px;
-}
-.hobbies ul {
-  list-style-type: none;
-  padding: 0;
-}
-.hobbies li {
-  font-weight: bold;
-  border-radius: 5px;
-  width: 20%;
-  display: flex;
-  flex-wrap: wrap;
-}
 .inspiration p {
   text-align: justify;
   margin-bottom: 20px;
@@ -520,4 +495,66 @@ a {
 .contact1:hover {
   transform: scale(1.02);
   box-shadow: 0 4px 4px black;
+}
+/* Base styles first */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Responsive layout for small screens */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  h1, h2, h3, p {
+    font-size: 90%; /* or use rem units for better scaling */
+  }
+
+  .project-cards {
+    flex-direction: column;
+  }
+
+  .project-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .project-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .contact1 {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  button#dark-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+  }
+}
+.project-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.project-card {
+  flex: 1 1 300px;
+  max-width: 100%;
 }
